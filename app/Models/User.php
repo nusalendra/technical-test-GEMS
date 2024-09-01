@@ -49,11 +49,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    public function suratPerintahLembur() {
-        return $this->hasMany(SuratPerintahLembur::class, 'user_id');
+    public function karyawan() {
+        return $this->hasOne(Karyawan::class, 'user_id');
     }
 
-    public function tandaTangan() {
-        return $this->hasOne(TandaTangan::class, 'user_id');
+    public function manager() {
+        return $this->hasOne(Manager::class, 'user_id');
     }
 }

@@ -12,7 +12,7 @@ class Posisi extends Model
     protected $primarykey = 'id';
     protected $fillable = ['nama'];
 
-    public function suratPerintahLembur() {
-        return $this->hasMany(SuratPerintahLembur::class, 'posisi_id');
+    public function karyawan() {
+        return $this->hasMany(Karyawan::class, 'posisi_id');
     }
 }
