@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('surat_perintah_lemburs', function (Blueprint $table) {
+        Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
+            $table->string('url_tanda_tangan')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('posisi_id')->constrained('posisis')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->date('tanggal');
-            $table->time('jam_mulai');
-            $table->time('jam_selesai');
-            $table->string('durasi');
-            $table->text('pekerjaan');
-            $table->string('status');
             $table->timestamps();
         });
     }
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('surat_perintah_lemburs');
+        Schema::dropIfExists('karyawans');
     }
 };

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Karyawan;
+use App\Models\Posisi;
 use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -30,11 +32,21 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Karyawan',
         ]);
 
+        Posisi::create([
+            'nama' => 'General Affair',
+        ]);
+
         User::create([
             'name' => 'karyawan',
             'username' => 'karyawan',
             'password' => bcrypt('karyawan'),
             'role_id' => 2
+        ]);
+
+        Karyawan::create([
+            'url_tanda_tangan' => null,
+            'user_id' => 2,
+            'posisi_id' => 1
         ]);
     }
 }

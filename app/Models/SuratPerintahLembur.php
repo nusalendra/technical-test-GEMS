@@ -10,13 +10,9 @@ class SuratPerintahLembur extends Model
     use HasFactory;
     protected $table = 'surat_perintah_lemburs';
     protected $primarykey = 'id';
-    protected $fillable = ['user_id', 'posisi_id', 'tanggal', 'jam_mulai', 'jam_selesai', 'durasi', 'status'];
+    protected $fillable = ['tanggal', 'jam_mulai', 'jam_selesai', 'durasi', 'status', 'karyawan_id'];
 
-    public function user() {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function posisi() {
-        return $this->belongsTo(Posisi::class, 'posisi_id');
+    public function karyawan() {
+        return $this->belongsTo(Karyawan::class, 'karyawan_id');
     }
 }
