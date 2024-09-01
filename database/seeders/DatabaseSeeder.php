@@ -25,5 +25,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('manager'),
             'role_id' => 1
         ]);
+
+        Role::create([
+            'nama' => 'Karyawan',
+        ]);
+
+        User::create([
+            'name' => 'karyawan',
+            'username' => 'karyawan',
+            'password' => bcrypt('karyawan'),
+            'role_id' => 2
+        ]);
     }
 }
