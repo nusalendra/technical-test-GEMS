@@ -11,37 +11,31 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if (Auth::user()->jabatan == 'Direktur')
+                @if (Auth::user()->role->nama == 'Manager')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('karyawan')" :active="request()->routeIs('karyawan')">
+                        <x-nav-link :href="route('posisi.index')" :active="request()->routeIs('posisi.index')">
+                            {{ __('Posisi') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('pengajuan-lembur-karyawan.index')" :active="request()->routeIs('pengajuan-lembur-karyawan.index')">
+                            {{ __('Pengajuan Lembur Karyawan') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('karyawan.index')" :active="request()->routeIs('karyawan.index')">
                             {{ __('Karyawan') }}
                         </x-nav-link>
                     </div>
+                @elseif(Auth::user()->role->nama == 'Karyawan')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('kelola-reimbursement')" :active="request()->routeIs('kelola-reimbursement')">
-                            {{ __('Kelola Reimbursement') }}
-                        </x-nav-link>
-                    </div>
-                @elseif(Auth::user()->jabatan == 'Finance')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('daftar-pengajuan-reimbursement')" :active="request()->routeIs('daftar-pengajuan-reimbursement')">
-                            {{ __('Daftar Pengajuan Reimbursement') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('laporan-reimbursement')" :active="request()->routeIs('laporan-reimbursement')">
-                            {{ __('Laporan Reimbursement') }}
-                        </x-nav-link>
-                    </div>
-                @elseif(Auth::user()->jabatan == 'Staff')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('pengajuan-reimbursement')" :active="request()->routeIs('pengajuan-reimbursement')">
-                            {{ __('Pengajuan Reimbursement') }}
+                        <x-nav-link :href="route('pengajuan-lembur.index')" :active="request()->routeIs('pengajuan-lembur.index')">
+                            {{ __('Pengajuan Lembur') }}
                         </x-nav-link>
                     </div>
                 @endif
