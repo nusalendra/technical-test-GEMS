@@ -16,18 +16,16 @@
                                 <tr>
                                     <th class="px-4 py-2 text-left">No</th>
                                     <th class="px-4 py-2 text-left">Nama Karyawan</th>
-                                    <th class="px-4 py-2 text-left">NIP</th>
-                                    <th class="px-4 py-2 text-left">Jabatan</th>
+                                    <th class="px-4 py-2 text-left">Posisi</th>
                                     <th class="px-4 py-2 text-left">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data as $index => $item)
+                                @foreach ($data as $index => $item)
                                     <tr>
                                         <td class="border px-4 py-2">{{ $index + 1 }}</td>
-                                        <td class="border px-4 py-2">{{ $item->nama }}</td>
-                                        <td class="border px-4 py-2">{{ $item->NIP }}</td>
-                                        <td class="border px-4 py-2">{{ $item->jabatan }}</td>
+                                        <td class="border px-4 py-2">{{ $item->name }}</td>
+                                        <td class="border px-4 py-2">{{ $item->karyawan->posisi->nama }}</td>
                                         <td class="border px-4 py-2 flex items-center justify-center">
                                             <div class="flex py-1">
                                                 <div class="flex flex-col justify-center items-center">
@@ -65,7 +63,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
