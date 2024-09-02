@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Karyawan\NotifikasiController;
 use App\Http\Controllers\Karyawan\PengajuanLemburController;
+use App\Http\Controllers\Manager\DashboardController;
 use App\Http\Controllers\Manager\KaryawanController;
 use App\Http\Controllers\Manager\PengajuanLemburKaryawanController;
 use App\Http\Controllers\Manager\PosisiController;
@@ -13,9 +14,7 @@ Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:Manager'], function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/posisi', [PosisiController::class, 'index'])->name('posisi.index');
         Route::get('/posisi/create', [PosisiController::class, 'create'])->name('posisi.create');
