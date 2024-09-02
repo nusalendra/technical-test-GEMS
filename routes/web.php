@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/posisi/{id}', [PosisiController::class, 'destroy'])->name('posisi.destroy');
 
         Route::get('/pengajuan-lembur-karyawan', [PengajuanLemburKaryawanController::class, 'index'])->name('pengajuan-lembur-karyawan.index');
+        Route::get('/pengajuan-lembur-karyawan/{id}', [PengajuanLemburKaryawanController::class, 'show'])->name('pengajuan-lembur-karyawan.show');
+        Route::put('/pengajuan-lembur-karyawan/{id}', [PengajuanLemburKaryawanController::class, 'update'])->name('pengajuan-lembur-karyawan.update');
         
         Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
         Route::get('/karyawan/create', [KaryawanController::class, 'create'])->name('karyawan.create');

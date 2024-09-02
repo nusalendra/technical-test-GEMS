@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Karyawan;
+use App\Models\Manager;
 use App\Models\Posisi;
 use App\Models\Role;
 use App\Models\User;
@@ -22,10 +23,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'manager',
+            'name' => 'Budi Erwandi',
             'username' => 'manager',
             'password' => bcrypt('manager'),
             'role_id' => 1
+        ]);
+
+        Manager::create([
+            'url_tanda_tangan' => null,
+            'user_id' => 1
         ]);
 
         Role::create([
@@ -37,7 +43,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'karyawan',
+            'name' => 'Daniel Andrian',
             'username' => 'karyawan',
             'password' => bcrypt('karyawan'),
             'role_id' => 2
