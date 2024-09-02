@@ -28,4 +28,5 @@ Alur Bisnis Aplikasi    :
     - Chart pengajuan lembur per bulan
 
 Database Design
-![Uploading drawSQL-image-export-2024-09-02.png…]()
+![drawSQL-image-export-2024-09-02](https://github.com/user-attachments/assets/c0d0f089-9b1e-48b7-8c3f-a6b62423d658)
+
