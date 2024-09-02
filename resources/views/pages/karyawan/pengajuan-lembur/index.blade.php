@@ -67,6 +67,62 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById('submitLembur').addEventListener('click', async function() {
+            let imageUrl =
+                '{{ $karyawan && $karyawan->url_tanda_tangan ? asset('storage/' . $karyawan->url_tanda_tangan) : null }}';
+
+            if (imageUrl) {
+                const {
+                    isConfirmed
+                } = await Swal.fire({
+                    title: 'Tanda Tangan yang Sudah Ada',
+                    imageUrl: imageUrl,
+                    imageAlt: 'Tanda tangan yang sudah ada',
+                    showCancelButton: true,
+                    confirmButtonText: 'Gunakan yang ada',
+                    cancelButtonText: 'Unggah Baru'
+                });
+
+                if (isConfirmed) {
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.type = 'hidden';
+                    hiddenInput.name = 'use_existing_signature';
+                    hiddenInput.value = 'true';
+                    document.getElementById('lemburForm').appendChild(hiddenInput);
+
+                    fetch(document.getElementById('lemburForm').action, {
+                        method: 'POST',
+                        body: new FormData(document.getElementById('lemburForm')),
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('input[name=_token]').value
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            Swal.fire({
+                                title: 'Berhasil!',
+                                text: 'Pengajuan lembur berhasil diajukan.',
+                                icon: 'success'
+                            }).then(() => {
+                                window.location.href = '/pengajuan-lembur';
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Terjadi kesalahan saat mengajukan lembur.',
+                                icon: 'error'
+                            });
+                        }
+                    }).catch(error => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Terjadi kesalahan saat mengajukan lembur.',
+                            icon: 'error'
+                        });
+                    });
+
+                    return;
+                }
+            }
+
             const {
                 value: file
             } = await Swal.fire({
