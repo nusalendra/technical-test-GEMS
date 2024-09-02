@@ -17,6 +17,12 @@ Route::middleware('auth')->group(function () {
         })->name('dashboard');
 
         Route::get('/posisi', [PosisiController::class, 'index'])->name('posisi.index');
+        Route::get('/posisi/create', [PosisiController::class, 'create'])->name('posisi.create');
+        Route::post('/posisi', [PosisiController::class, 'store'])->name('posisi.store');
+        Route::get('/posisi/{id}/edit', [PosisiController::class, 'edit'])->name('posisi.edit');
+        Route::put('/posisi/{id}', [PosisiController::class, 'update'])->name('posisi.update');
+        Route::delete('/posisi/{id}', [PosisiController::class, 'destroy'])->name('posisi.destroy');
+
         Route::get('/pengajuan-lembur-karyawan', [PengajuanLemburKaryawanController::class, 'index'])->name('pengajuan-lembur-karyawan.index');
         
         Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
