@@ -26,3 +26,6 @@ Alur Bisnis Aplikasi    :
     - Chart pengajuan lembur berdasarkan status (Setuju, Tolak, Menunggu Persetujuan).
     - Chart durasi lembur berdasarkan karyawan
     - Chart pengajuan lembur per bulan
+
+Database Design
+![Uploading drawSQL-image-export-2024-09-02.png…]()
