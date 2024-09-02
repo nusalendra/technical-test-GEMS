@@ -38,6 +38,11 @@
                             {{ __('Pengajuan Lembur') }}
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('notifikasi.index')" :active="request()->routeIs('notifikasi.index')">
+                            {{ __('Notifikasi') }}
+                        </x-nav-link>
+                    </div>
                 @endif
             </div>
 

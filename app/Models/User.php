@@ -57,4 +57,8 @@ class User extends Authenticatable
     public function manager() {
         return $this->hasOne(Manager::class, 'user_id');
     }
+
+    public function notifikasi() {
+        return $this->hasMany(Notifikasi::class, 'user_id');
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Karyawan\NotifikasiController;
 use App\Http\Controllers\Karyawan\PengajuanLemburController;
 use App\Http\Controllers\Manager\KaryawanController;
 use App\Http\Controllers\Manager\PengajuanLemburKaryawanController;
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:Karyawan'], function () {
         Route::get('/pengajuan-lembur', [PengajuanLemburController::class, 'index'])->name('pengajuan-lembur.index');
         Route::post('/pengajuan-lembur', [PengajuanLemburController::class, 'store'])->name('pengajuan-lembur.store');
+
+        Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi.index');
+        Route::get('/notifikasi/{id}', [NotifikasiController::class, 'show'])->name('notifikasi.show');
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

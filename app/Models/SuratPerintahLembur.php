@@ -15,4 +15,8 @@ class SuratPerintahLembur extends Model
     public function karyawan() {
         return $this->belongsTo(Karyawan::class, 'karyawan_id');
     }
+
+    public function notifikasi() {
+        return $this->hasOne(Notifikasi::class, 'surat_perintah_lembur_id');
+    }
 }
