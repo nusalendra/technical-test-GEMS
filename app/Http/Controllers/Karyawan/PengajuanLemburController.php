@@ -17,19 +17,25 @@ class PengajuanLemburController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('pages.karyawan.pengajuan-lembur.index', compact('user'));
+        $karyawan = Karyawan::where('user_id', $user->id)->first();
+        return view('pages.karyawan.pengajuan-lembur.index', compact('user', 'karyawan'));
     }
 
     public function store(Request $request)
     {
         try {
-            $request->validate([
+            $rules = [
                 'tanggal' => ['required', 'date'],
                 'jam_mulai' => ['required', 'date_format:H:i'],
                 'jam_selesai' => ['required', 'date_format:H:i', 'after:jam_mulai'],
                 'pekerjaan' => ['required', 'string', 'max:255'],
-                'tanda_tangan' => ['required', 'file', 'mimes:jpeg,png,jpg,gif', 'max:2048']
-            ]);
+            ];
+
+            if (!$request->has('use_existing_signature')) {
+                $rules['tanda_tangan'] = ['required', 'file', 'mimes:jpeg,png,jpg,gif', 'max:2048'];
+            }
+
+            $request->validate($rules);
 
             $jamMulai = \Carbon\Carbon::createFromFormat('H:i', $request->jam_mulai);
             $jamSelesai = \Carbon\Carbon::createFromFormat('H:i', $request->jam_selesai);
@@ -46,7 +52,7 @@ class PengajuanLemburController extends Controller
             $user = Auth::user();
 
             $karyawan = Karyawan::where('user_id', $user->id)->first();
-            
+
             if ($request->hasFile('tanda_tangan')) {
                 if ($karyawan->url_tanda_tangan) {
                     Storage::disk('public')->delete($karyawan->url_tanda_tangan);
@@ -56,6 +62,7 @@ class PengajuanLemburController extends Controller
                 $path = $file->store('tanda_tangan', 'public');
                 $karyawan->url_tanda_tangan = $path;
             }
+
             $karyawan->save();
 
             SuratPerintahLembur::create([
