@@ -2,36 +2,32 @@
     @section('title', 'Karyawan')
     <div class="py-12">
         <div class="max-w-7xl rounded-md mx-auto text-end">
-            <a href="/karyawan/create">
-                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Tambah Karyawan</button>
+            <a href="/posisi/create">
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Tambah Posisi</button>
             </a>
         </div>
         <div class="max-w-7xl rounded-md mx-auto sm:px-6 lg:px-8 bg-white">
             <div class="card">
-                <h5 class="font-bold py-4 text-lg">Data Karyawan</h5>
+                <h5 class="font-bold py-4 text-lg">Data Posisi Perusahaan</h5>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="myTable" class="table-auto min-w-full">
                             <thead>
                                 <tr>
                                     <th class="px-4 py-2 text-left">No</th>
-                                    <th class="px-4 py-2 text-left">Nama Karyawan</th>
-                                    <th class="px-4 py-2 text-left">NIP</th>
-                                    <th class="px-4 py-2 text-left">Jabatan</th>
+                                    <th class="px-4 py-2 text-left">Posisi</th>
                                     <th class="px-4 py-2 text-left">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data as $index => $item)
+                                @foreach ($data as $index => $item)
                                     <tr>
                                         <td class="border px-4 py-2">{{ $index + 1 }}</td>
                                         <td class="border px-4 py-2">{{ $item->nama }}</td>
-                                        <td class="border px-4 py-2">{{ $item->NIP }}</td>
-                                        <td class="border px-4 py-2">{{ $item->jabatan }}</td>
                                         <td class="border px-4 py-2 flex items-center justify-center">
                                             <div class="flex py-1">
                                                 <div class="flex flex-col justify-center items-center">
-                                                    <a href="/karyawan/{{ $item->id }}/edit">
+                                                    <a href="/posisi/{{ $item->id }}/edit">
                                                         <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
                                                             <div class="flex items-center">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -46,7 +42,7 @@
                                             </div>
                                             <div class="flex py-1">
                                                 <div class="flex flex-col justify-center items-center">
-                                                    <form id="delete-form-{{ $item->id }}" action="/karyawan/{{ $item->id }}" method="POST" class="inline-block">
+                                                    <form id="delete-form-{{ $item->id }}" action="/posisi/{{ $item->id }}" method="POST" class="inline-block">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="button" onclick="confirmDelete({{ $item->id }})"
@@ -65,7 +61,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
